@@ -2,6 +2,7 @@ let scrollSteps = 0;
 let offsets = [0,0];
 
 let epanel = [document.getElementById("panel1"), document.getElementById("panel2"), document.getElementById("panel3"), document.getElementById("panel4")]
+let iPanel = [document.getElementById("info-panel1"), document.getElementById("info-panel2"), document.getElementById("info-panel3"), document.getElementById("info-panel4")]
 let currentEpanelScale = Array.from(Array(epanel.length), () => 0);
 let currentScale = 0;
 let currentOffsets = [0,0];
@@ -73,7 +74,7 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
     cScale = clamp((((cScale * -0.85) + 1) * 10), 0, 10);
 
     if (cScale != 0 && cScale != 10){
-        if (transitionPoint < 1.1 && transitionPoint > 1.0){
+        if (transitionPoint < 1.05 && transitionPoint > 1.0){
             cScale = 1;
             // if (epanelFocus == 0) {
             //     epanelFocus = 1;
@@ -83,8 +84,13 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
             // console.log(currentEpanelFocus)
             cOffset[0] = 0;
             cOffset[1] = 0;
+            iPanel[index].style = "opacity: 1; pointer-events: auto;";
+        }
+        else {
+            iPanel[index].style = "opacity: 0; pointer-events: none;";
         }
     }
+    
     //cOpacity += panelOffset;
     cOpacity = calcOpacity(cOpacity + (index * 10 * offsetScalar));
 

@@ -31,6 +31,12 @@
     
 }
 
+.info-panel-container {
+  opacity: 0%;
+  pointer-events: none;
+  transition: opacity 1s;
+}
+
 .opening-panel {
   height: 100%;
   width: 100%;
@@ -87,4 +93,16 @@
     -o-transform: scaleY(-1) translateY(-100%);
     -ms-transform: scaleY(-1) translateY(-100%);
     transform: scaleY(-1) translateY(-100%);
+}
+
+.slider {
+  width: 100%;
+}
+
+.text-container {
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 50px;
 }

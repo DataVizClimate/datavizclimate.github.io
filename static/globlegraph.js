@@ -14,6 +14,7 @@ function buildGlobe(year) {
   world = Globe()
   //.globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg')
   //.backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+  .globeMaterial(new THREE.MeshLambertMaterial({ color: '#00303d' }))
   .backgroundColor('rgba(0, 0, 0, 0)')
   .lineHoverPrecision(0)
   .polygonsData(temperatureData.features.filter(d => d.properties.Year == year))
@@ -32,7 +33,6 @@ function buildGlobe(year) {
   )
   .polygonsTransitionDuration(0) //300
   (document.getElementById('globeViz'))
-
   world.controls().enableZoom = false;
 }
 
@@ -75,7 +75,7 @@ function resizeGlobe() {
 function onYearSliderChange() { //event
   if (globeDataReady){
     let year = document.getElementById("year-slider").value;
-    document.getElementById("year").innerHTML = `Year: ${year}`
+    document.getElementById("year").innerHTML = `${year}`
     //buildGlobe(year)
     world.polygonsData(temperatureData.features.filter(d => d.properties.Year == year))
     
