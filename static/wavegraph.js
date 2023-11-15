@@ -5,7 +5,7 @@
 
 // Fetch the CSV file from the server
 
-function updateGraph() {
+function updateWaveGraph() {
     let all_data = []
 
     fetch('static/data/output.csv')
@@ -132,3 +132,5 @@ function updateGraph() {
         console.error('Error fetching the CSV file:', error);
     });
 }
+
+updateWaveGraph();

@@ -4,7 +4,7 @@ class components {
     let stars = []
     for (let i=0; i<amount; i++) {
       const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
-      const geometry = new THREE.SphereGeometry(0.1);
+      const geometry = new THREE.SphereGeometry(0.05);
       const cube = new THREE.Mesh(geometry, material);
       
       //let center = [0,0, -15]

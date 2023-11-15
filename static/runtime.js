@@ -17,7 +17,8 @@ window.addEventListener('resize', function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    updateGraph();
+    updateWaveGraph();
+    resizeGlobe();
 });
 
 function calcOpacity(scrollSteps) {
@@ -87,7 +88,7 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
     //cOpacity += panelOffset;
     cOpacity = calcOpacity(cOpacity + (index * 10 * offsetScalar));
 
-    currentEpanelScale[index] = lerp(currentEpanelScale[index], cScale, dt * 0.02);
+    currentEpanelScale[index] = lerp(currentEpanelScale[index], cScale, dt * 20);
 
     epanel[index].style.transform = `matrix3d(1, 0, 0, 0,
                                               0, 1, 0, 0,
@@ -109,7 +110,8 @@ function init() {
     
     mesh2    = components.cube2(5,1,70);
     light    = components.light(-600, 300, 600);
-    water    = components.water(renderer, camera, scene, null, 0, -2, -140);
+    // water    = components.water(renderer, camera, scene, null, 0, -2, -140);
+    water    = waterComponent(renderer, camera, scene, null, 0, -2, -140);
     stars    = components.stars(scene, 200, [0, -5, -15]);
 
     camera.position.z = 5;
@@ -130,20 +132,20 @@ function init() {
     scene.add(light);
 
 	//controls = new THREE.OrbitControls(camera, render.domElement);
-    updateGraph();
+    // updateWaveGraph();
 }
 
 function update(dt, now) {
     scaledScrollSteps = scrollSteps * 0.1;
 
-    currentScale = lerp(currentScale, scaledScrollSteps, dt * 0.01);
-    currentOffsets[0] = lerp(currentOffsets[0], offsets[0], dt * 0.005);
-    currentOffsets[1] = lerp(currentOffsets[1], offsets[1], dt * 0.005);
+    currentScale = lerp(currentScale, scaledScrollSteps, dt * 10);
+    currentOffsets[0] = lerp(currentOffsets[0], offsets[0], dt * 5);
+    currentOffsets[1] = lerp(currentOffsets[1], offsets[1], dt * 5);
 
     currentOpacity = currentScale * 10;
     
     for (let i = 0; i < epanel.length; i++){
-        panel(i, scaledScrollSteps, currentScale, [0,0], currentOpacity, dt);
+        panel(i, scaledScrollSteps, currentScale, currentOffsets, currentOpacity, dt);
     }
     // panel(0, currentScale, currentOffsets, currentOpacity);
     // panel(1, currentScale, currentOffsets, currentOpacity);
@@ -163,29 +165,39 @@ function update(dt, now) {
     }
 }
 
+let lastUpdate = 0;
+
 function animate() {
     requestAnimationFrame(animate);
-    water.material.uniforms.time.value += 0.075 / 60.0;
-    //controls.update();
     
+    const now = performance.now() * 0.001;
+    // var now = Date.now();
+    const dt = now - lastUpdate;
+    lastUpdate = now;
+
+    //water.material.uniforms.time.value += 0.075 / 60.0;
+    water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+
     scene.fog = new THREE.FogExp2(backgroundColor, 0.05);
     renderer.setClearColor(backgroundColor);
 
-    water.render()
+    //water.render()
     renderer.render(scene, camera);
+
+    update(dt, now);
 }
 
 init();
 animate();
 
-var lastUpdate = Date.now();
-var myInterval = setInterval(tick, 0);
+// var lastUpdate = Date.now();
+// var myInterval = setInterval(tick, 0);
 
-function tick() {
-    var now = Date.now();
-    var dt = now - lastUpdate;
-    lastUpdate = now;
+// function tick() {
+//     var now = Date.now();
+//     var dt = now - lastUpdate;
+//     lastUpdate = now;
 
-    update(dt, now);
-}
+//     update(dt, now);
+// }
 
