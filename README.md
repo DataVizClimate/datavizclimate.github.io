@@ -9,8 +9,8 @@
 ## JS
 - ThreeJS
 - Globe.GL
-- [https://github.com/mrdoob/three.js/blob/master/examples/webgl_shaders_ocean.html](Ocean Shader)
+- [Ocean Shader](https://github.com/mrdoob/three.js/blob/master/examples/webgl_shaders_ocean.html)
 
 ## Data
-- [https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data/](Climate)
+- [Climate](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data/)
 - Wave
