@@ -14,3 +14,4 @@
 ## Data
 - [Climate](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data/)
 - Wave
+- [Oahu Model](https://www.thingiverse.com/thing:852502)

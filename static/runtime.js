@@ -122,7 +122,7 @@ function init() {
     // water    = components.water(renderer, camera, scene, null, 0, -2, -140);
     water    = waterComponent(renderer, camera, scene, null, 0, -2, -140);
     stars    = components.stars(scene, 200, [0, -5, -15]);
-
+    let oahu = loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
     camera.position.z = 5;
     //mesh.position.y = -2;
 
@@ -185,7 +185,7 @@ function animate() {
     lastUpdate = now;
 
     //water.material.uniforms.time.value += 0.075 / 60.0;
-    water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+    water.material.uniforms[ 'time' ].value += 0.1 / 60.0;
 
     scene.fog = new THREE.FogExp2(backgroundColor, 0.05);
     renderer.setClearColor(backgroundColor);
