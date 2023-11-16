@@ -86,6 +86,7 @@ h3 {
   /*transform: scale(0.5);*/
   /*transition: all 0.1s;*/
   color: white;
+  text-shadow: #000000 1px 0 10px;
 }
 
 
@@ -120,6 +121,7 @@ h3 {
 .text-container {
   background-color: white;
   color: black;
+  text-shadow: #000000FF 0px 0 0px;
   border-radius: 10px;
   padding: 25px;
   margin: 50px;

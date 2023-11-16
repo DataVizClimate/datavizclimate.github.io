@@ -10,7 +10,7 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 # Get Polygons From Example Globe.Gl Example
 isoA2ToPolygon = {}
 
-file_path = os.path.join(__location__,"..","..","static","data","ne_110m_admin_0_countries.geojson")
+file_path = os.path.join(__location__,"..","..","static","data","ingress","ne_110m_admin_0_countries.geojson")
 with open(file_path, 'r') as file:
     data = json.load(file)
 
@@ -29,7 +29,7 @@ with open(file_path, 'r') as file:
 geo_json = []
 yearly_region_temp = {}
 
-df = pd.read_csv(os.path.join(__location__,"..","..","static","data","GlobalLandTemperaturesByCountry.csv"))
+df = pd.read_csv(os.path.join(__location__,"..","..","static","data","ingress","GlobalLandTemperaturesByCountry.csv"))
 df.fillna('', inplace=True)
 print(df.head())
 

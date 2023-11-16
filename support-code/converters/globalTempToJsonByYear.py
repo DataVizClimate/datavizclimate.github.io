@@ -9,7 +9,7 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 json_temp = {}
 yearly_region_temp = {}
 
-df = pd.read_csv(os.path.join(__location__,"..","..","static","data","GlobalTemperatures.csv"))
+df = pd.read_csv(os.path.join(__location__,"..","..","static","data","ingress","GlobalTemperatures.csv"))
 df.fillna('', inplace=True)
 print(df.head())
 

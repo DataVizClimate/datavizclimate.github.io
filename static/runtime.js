@@ -18,7 +18,7 @@ window.addEventListener('resize', function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    updateWaveGraph();
+    // updateWaveGraph();
     resizeGlobe();
 });
 
@@ -140,9 +140,6 @@ function init() {
     scene.add(space);
     //scene.add(mesh2);
     scene.add(light);
-
-	//controls = new THREE.OrbitControls(camera, render.domElement);
-    // updateWaveGraph();
 }
 
 function update(dt, now) {
@@ -187,13 +184,13 @@ function animate() {
 
     //water.material.uniforms.time.value += 0.075 / 60.0;
     water.material.uniforms[ 'time' ].value += 0.1 / 60.0;
+    water.position.y = -2 + (seaLevel * 0.005);
 
     scene.fog = new THREE.FogExp2(backgroundColor, 0.05);
     renderer.setClearColor(backgroundColor);
 
     //water.render()
     renderer.render(scene, camera);
-
     update(dt, now);
 }
 
