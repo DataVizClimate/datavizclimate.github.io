@@ -84,9 +84,11 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
             // console.log(currentEpanelFocus)
             cOffset[0] = 0;
             cOffset[1] = 0;
+            // epanel[index].style = "pointer-events: auto;";
             iPanel[index].style = "opacity: 1; pointer-events: auto;";
         }
         else {
+            // epanel[index].style = "pointer-events: none;";
             iPanel[index].style = "opacity: 0; pointer-events: none;";
         }
     }
@@ -167,7 +169,7 @@ function update(dt, now) {
     openingPanel(scrollSteps);
     //}
     for (let i=0; i<stars.length; i++) {
-        stars[i].material.color.setHex(parseInt(lerpColor(Math.sin((now * i * 0.00001)), "#444444", "#FFFFFF").slice(1), 16)); 
+        stars[i].material.color.setHex(parseInt(lerpColor(Math.sin((now * i * 0.01)), "#444444", "#FFFFFF").slice(1), 16)); 
     }
 }
 

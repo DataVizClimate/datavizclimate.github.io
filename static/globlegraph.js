@@ -6,7 +6,7 @@ const colorScale = d3.scaleSequentialSqrt(d3.interpolateYlOrRd);
 
 //const getVal = feat => feat.properties.AvgTemp / Math.max(1e5, feat.properties.AvgTemp);
 const getVal = feat => feat.properties.AvgTemp;
-
+let temperatureMapping = {}
 // celsius, Land Temperature Avg
 // 1840, 1850 - 2013
 
@@ -25,7 +25,7 @@ function buildGlobe(year) {
   .polygonLabel(({ properties: d }) => `
   <b>${d.Country}</b>
   <br/>
-  Avg Land Temp: ${d.AvgTemp} Celsius
+  Land Temp: ${d.AvgTemp}°C
   `)
   .onPolygonHover(hoverD => world
       .polygonAltitude(d => d === hoverD ? 0.05 : 0.01)//0.05 : 0.01)
@@ -60,14 +60,23 @@ fetch('static/data/GlobalTemp.geojson.gz')
     colorScale.domain([minTemp, maxTemp + 100]);
 
     buildGlobe("1850")
-    globeDataReady = true
+
+    fetch('static/data/GlobalTemp.json')
+    .then(response => response.json())
+    .then(globalTemp => {
+      temperatureMapping = globalTemp;
+
+      globeDataReady = true
+      onYearSliderChange()
+      resizeGlobe()
+    });
 });
 
 
 function resizeGlobe() {
   if (globeDataReady){
     const { innerWidth, innerHeight } = window;
-    world.width(innerWidth).height(innerHeight);
+    world.width(innerWidth).height(innerHeight - 300);
   }
 }
 
@@ -76,6 +85,7 @@ function onYearSliderChange() { //event
   if (globeDataReady){
     let year = document.getElementById("year-slider").value;
     document.getElementById("year").innerHTML = `${year}`
+    document.getElementById("temperature").innerHTML = `${temperatureMapping[year].toFixed(1)}°C`
     //buildGlobe(year)
     world.polygonsData(temperatureData.features.filter(d => d.properties.Year == year))
     
