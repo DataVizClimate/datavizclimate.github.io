@@ -76,7 +76,8 @@ fetch('static/data/GlobalTemp.geojson.gz')
 function resizeGlobe() {
   if (globeDataReady){
     const { innerWidth, innerHeight } = window;
-    world.width(innerWidth).height(innerHeight - 300);
+    const offset = document.getElementById("globe-prompt").offsetHeight;
+    world.width(innerWidth).height(innerHeight - offset);
   }
 }
 
