@@ -74,7 +74,8 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
     cScale = clamp((((cScale * -0.85) + 1) * 10), 0, 10);
 
     if (cScale != 0 && cScale != 10){
-        if (transitionPoint < 1.05 && transitionPoint > 1.0){
+        // if (transitionPoint < 1.05 && transitionPoint > 1.0){
+        if (transitionPoint < 1.1 && transitionPoint > 0.95){
             cScale = 1;
             // if (epanelFocus == 0) {
             //     epanelFocus = 1;
