@@ -133,4 +133,9 @@ function updateWaveGraph() {
     });
 }
 
+window.addEventListener('resize', function() {
+    updateWaveGraph();
+});
+
+
 updateWaveGraph();

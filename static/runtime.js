@@ -14,13 +14,47 @@ let scene, camera, renderer, mesh, water, controls, stars;
 
 addEventListener("wheel", (event) => {zoom(event)});
 addEventListener('mousemove', (event) => {move(event)});
+// addEventListener('touchmove', onScroll());
 window.addEventListener('resize', function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     // updateWaveGraph();
-    resizeGlobe();
+    // resizeGlobe();
 });
+
+// FOR TESTING ONLY (INTERFERES W/ INTERACTIVE VISUALIZATIONS)
+// // Mobile Touch Scroll to Wheel
+
+// let initialTouchY = null;
+
+// window.addEventListener("touchstart", (event) => {
+//   initialTouchY = event.touches[0].clientY;
+// });
+
+// window.addEventListener("touchmove", (event) => {
+//   if (initialTouchY === null) {
+//     return;
+//   }
+
+//   const currentTouchY = event.touches[0].clientY;
+//   const deltaY = currentTouchY - initialTouchY;
+//   initialTouchY = currentTouchY;
+
+//   // You can adjust the sensitivity here
+//   const sensitivity = -3; // Adjust as needed
+
+//   // Trigger zoom with deltaY and sensitivity
+//   const fakeWheelEvent = new WheelEvent("wheel", { deltaY: deltaY * sensitivity });
+//   zoom(fakeWheelEvent);
+// });
+
+// window.addEventListener("touchend", () => {
+//   initialTouchY = null;
+// });
+
+
+// //
 
 function calcOpacity(scrollSteps) {
     //return Math.sin((scrollSteps * 0.2) + 0.1) * 2;

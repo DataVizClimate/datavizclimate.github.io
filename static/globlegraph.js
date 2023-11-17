@@ -93,3 +93,7 @@ function onYearSliderChange() { //event
   }
   // console.log("test")
 }
+
+window.addEventListener('resize', function() {
+  resizeGlobe();
+});
