@@ -1,5 +1,15 @@
-# datavizclimate.github.io
+# ClimateDataVis
+As the world continues to progress into time, climate change is becoming more of a reality. As summers get hotter, winters warmer, the world is getting warmer due to global warming. Furthermore, leading to higher sea levels, and tides coming more close to land. In our website, we seek to convey these concepts in a visual interactive manner. 
+
+This project is part of our Data Visualization Class at the University of Hawaii at Manoa, however, we decided to make it more meaningful and impactful to our local communities. We would like to thank Dr. Nurit Kirshenbaum for her support in our endeavors with this project
+
+# View Site
 Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io/)
+
+# Team Ambitious
+- Amanda Nitta - Data Science (Overall Lead)
+- Justin Yip - Design/Storyline Specialist
+- Christopher Lee - Software Engineer
 
 # Acknowledgements
 
