@@ -30,7 +30,7 @@ function waterComponent(ms_Renderer, ms_Camera, ms_Scene, directionalLight, x, y
             } ),
             sunDirection: new THREE.Vector3(),
             sunColor: 0xffffff,
-            waterColor: 0x101DD4,
+            waterColor: 0x001B79,
             distortionScale: 3.7,
             fog: true
             // fog: scene.fog !== undefined
