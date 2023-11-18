@@ -7,9 +7,9 @@ This project is part of our Data Visualization Class at the University of Hawaii
 Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io/)
 
 # Team Ambitious
+- Christopher Lee - Software Engineer
 - Amanda Nitta - Data Science (Overall Lead)
 - Justin Yip - Design/Storyline Specialist
-- Christopher Lee - Software Engineer
 
 # Acknowledgements
 
