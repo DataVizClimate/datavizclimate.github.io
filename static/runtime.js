@@ -157,7 +157,8 @@ function init() {
     water    = waterComponent(renderer, camera, scene, null, 0, -2, -140);
     stars    = components.stars(scene, 200, [0, -5, -15]);
     
-    loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
+    //loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
+    loadObjComponent('static/models/beach.obj', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
     camera.position.z = 5;
     //mesh.position.y = -2;
 
