@@ -149,20 +149,32 @@ function init() {
     camera   = components.camera();
     //mesh     = components.cube(5,1,70, 0x0000FF);
     space    = components.cube(200,20,2, 0x000000);
-    mesh3    = components.cube(200,1,70, 0x0000FF);
+    // mesh3    = components.cube(200,1,70, 0x0000FF);
+    beachext = components.cube(200,1,70, 0x504F16);
     
-    mesh2    = components.cube2(5,1,70);
     light    = components.light(-600, 300, 600);
     // water    = components.water(renderer, camera, scene, null, 0, -2, -140);
     water    = waterComponent(renderer, camera, scene, null, 0, -2, -140);
     stars    = components.stars(scene, 200, [0, -5, -15]);
     
     //loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
-    loadObjComponent('static/models/beach.obj', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
+    // loadObjComponent('static/models/beach.obj', 'static/textures/beach2.mtl', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
+    loadFbxComponent('static/models/beach.fbx', scene, [5, -2.35, -60], [-Math.PI, 0, Math.PI], [1,1,1], 
+    (object) => {
+        const leftBeach  = object.clone();
+        const rightBeach = object.clone();
+
+        leftBeach.position.set(-38, -2.35, -60);
+        scene.add(leftBeach)
+
+        rightBeach.position.set(43, -2.35, -60);
+        scene.add(rightBeach)
+    });
     camera.position.z = 5;
     //mesh.position.y = -2;
 
-    mesh3.position.set(0, -2, -170);
+    // mesh3.position.set(0, -2, -170);
+    beachext.position.set(0, -1.75, -105);
     space.position.set(0, -11, -40);
 
     //scene.fog = new THREE.Fog(0xFFFFFF, 0.005, 10)
@@ -171,9 +183,9 @@ function init() {
     renderer.setClearColor(0x000000);
     scene.add(components.sky());
 
-    scene.add(mesh3);
+    scene.add(beachext);
+    // scene.add(mesh3);
     scene.add(space);
-    //scene.add(mesh2);
     scene.add(light);
 }
 
