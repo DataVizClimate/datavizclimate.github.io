@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import { STLLoader } from 'three/addons/STLLoader.js'
 import { OBJLoader } from 'three/addons/OBJLoader.js'
+import { FBXLoader } from 'three/addons/FBXLoader.js'
+// import { MTLLoader } from 'three/addons/MLTLoader.js'
 
 // const envTexture = new THREE.CubeTextureLoader().load([
 //     'img/px_50.png',
@@ -47,9 +49,7 @@ function loadStlComponent(stlFile, scene, coords, rotation, scale){
 
 window.loadStlComponent = loadStlComponent;
 
-
-
-function loadObjComponent(objFile, scene, coords, rotation, scale){
+function loadObjComponent(objFile, mtlFile, scene, coords, rotation, scale){
     const material = new THREE.MeshPhysicalMaterial({
         color: 0xb2ffc8,
         // envMap: envTexture,
@@ -72,10 +72,44 @@ function loadObjComponent(objFile, scene, coords, rotation, scale){
                     child.material = material
                 }
             })
-            scene.add(geometry)
             geometry.position.set(coords[0], coords[1], coords[2]);
             geometry.rotation.set(rotation[0], rotation[1], rotation[2])
             geometry.scale.set(scale[0], scale[1], scale[2])
+            scene.add(geometry)
+
+            // if (mtlFile != undefined) {
+            //     const mtlLoader = new MTLLoader()
+            //     mtlLoader.load(
+            //         mltFile,
+            //         (materials) => {
+            //             materials.preload()
+            //             console.log(materials)
+
+            //             geometry.setMaterials(materials)
+            //             // const objLoader = new OBJLoader()
+            //             // objLoader.setMaterials(materials)
+            //             // objLoader.load(
+            //             //     'models/monkey.obj',
+            //             //     (object) => {
+            //             //         scene.add(object)
+            //             //     },
+            //             //     (xhr) => {
+            //             //         console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+            //             //     },
+            //             //     (error) => {
+            //             //         console.log('An error happened')
+            //             //     }
+            //             // )
+            //         },
+            //         (xhr) => {
+            //             console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+            //         },
+            //         (error) => {
+            //             console.log('An error happened')
+            //         }
+            //     )
+            // }
+
             return geometry;
         },
         (xhr) => {
@@ -89,3 +123,37 @@ function loadObjComponent(objFile, scene, coords, rotation, scale){
 }
 
 window.loadObjComponent = loadObjComponent;
+
+
+
+function loadFbxComponent(fbxFile, scene, coords, rotation, scale, callback){
+    const fbxLoader = new FBXLoader()
+    fbxLoader.load(
+        fbxFile,
+        (object) => {
+            object.traverse(function (child) {
+                if (child.isMesh) {
+                    // child.material = material
+                    if (child.material) {
+                        child.material.transparent = false
+                    }
+                }
+            })
+    
+            object.position.set(coords[0], coords[1], coords[2]);
+            object.rotation.set(rotation[0], rotation[1], rotation[2])
+            object.scale.set(scale[0], scale[1], scale[2])
+            scene.add(object)
+
+            callback(object)
+        },
+        (xhr) => {
+            console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+        },
+        (error) => {
+            console.log(error)
+        }
+    )
+}
+
+window.loadFbxComponent = loadFbxComponent;
