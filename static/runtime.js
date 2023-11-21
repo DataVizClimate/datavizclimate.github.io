@@ -2,7 +2,10 @@ let scrollSteps = 0;
 let offsets = [0,0];
 
 let epanel = [document.getElementById("panel1"), document.getElementById("panel2"), document.getElementById("panel3"), document.getElementById("panel4")]
-let iPanel = [document.getElementById("info-panel1"), document.getElementById("info-panel2"), document.getElementById("info-panel3"), document.getElementById("info-panel4")]
+let iPanel = [[document.getElementById("info-panel1")], 
+                [document.getElementById("info-panel2"), document.getElementById("info-panel2-slider")], 
+                [document.getElementById("info-panel3")], 
+                [document.getElementById("info-panel4")]]
 let currentEpanelScale = Array.from(Array(epanel.length), () => 0);
 let currentScale = 0;
 let currentOffsets = [0,0];
@@ -120,11 +123,16 @@ function panel(index, cScaleRaw, cScale, cOffset, cOpacity, dt) {
             cOffset[0] = 0;
             cOffset[1] = 0;
             // epanel[index].style = "pointer-events: auto;";
-            iPanel[index].style = "opacity: 1; pointer-events: auto;";
+
+            for (let i=0; i<iPanel[index].length; i++){
+                iPanel[index][i].style = "opacity: 1; pointer-events: auto;";
+            }
         }
         else {
             // epanel[index].style = "pointer-events: none;";
-            iPanel[index].style = "opacity: 0; pointer-events: none;";
+            for (let i=0; i<iPanel[index].length; i++){
+                iPanel[index][i].style = "opacity: 0; pointer-events: none;";
+            }
         }
     }
     
@@ -159,15 +167,15 @@ function init() {
     
     //loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
     // loadObjComponent('static/models/beach.obj', 'static/textures/beach2.mtl', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
-    loadFbxComponent('static/models/beach.fbx', scene, [5, -2.35, -60], [-Math.PI, 0, Math.PI], [1,1,1], 
+    loadFbxComponent('static/models/beach2.fbx', scene, [5, -2.35, -63], [-Math.PI, 0, Math.PI], [1,1,1], 
     (object) => {
         const leftBeach  = object.clone();
         const rightBeach = object.clone();
 
-        leftBeach.position.set(-38, -2.35, -60);
+        leftBeach.position.set(-38, -2.35, -63);
         scene.add(leftBeach)
 
-        rightBeach.position.set(43, -2.35, -60);
+        rightBeach.position.set(43, -2.35, -63);
         scene.add(rightBeach)
     });
     camera.position.z = 5;
@@ -179,7 +187,9 @@ function init() {
 
     //scene.fog = new THREE.Fog(0xFFFFFF, 0.005, 10)
     //scene.background = new THREE.Color(0xFFFFFF);
-    scene.fog = new THREE.FogExp2(0x000000, 0.05);
+    scene.fog = new THREE.FogExp2(0x000000, 0.04);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 2.5;
     renderer.setClearColor(0x000000);
     scene.add(components.sky());
 
@@ -233,7 +243,7 @@ function animate() {
     water.material.uniforms[ 'time' ].value += 0.1 / 60.0;
     water.position.y = -2 + (seaLevel * 0.005);
 
-    scene.fog = new THREE.FogExp2(backgroundColor, 0.05);
+    scene.fog = new THREE.FogExp2(backgroundColor, 0.07);
     renderer.setClearColor(backgroundColor);
 
     //water.render()
