@@ -10,7 +10,7 @@ Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io
 
 ## 3D Models and Assets
 - [Oahu Model](https://www.thingiverse.com/thing:852502)
-- [Coint](https://en.m.wikipedia.org/wiki/File:US_One_Cent_Obv.png)
+- [Coin](https://en.m.wikipedia.org/wiki/File:US_One_Cent_Obv.png)
 
 ## Data
 - [Climate](https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data/)
