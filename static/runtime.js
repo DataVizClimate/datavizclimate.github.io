@@ -89,7 +89,11 @@ function zoom(event) {
     // every panel is spaced by 20
     const panelSpacing = 12;
     scrollSteps = clamp(scrollSteps, 0, (panelSpacing * epanel.length) - 1.5);
-    //console.log(scrollSteps);
+    // console.log(scrollSteps);
+    // 9.5 to 11
+    // 21.75 to 23
+    // 33.75 to 35
+    document.getElementById("overall-progress-bar").style = `width: ${mapRange(scrollSteps, 0, 46.5, 0, 100)}%;`;
 }
 
 function openingPanel(translateY) {
@@ -159,6 +163,7 @@ function init() {
     space    = components.cube(200,20,2, 0x000000);
     // mesh3    = components.cube(200,1,70, 0x0000FF);
     beachext = components.cube(200,1,70, 0x504F16);
+    endExt   = components.cube(200,1,70, 0xa6f0ff);
     
     light    = components.light(-600, 300, 600);
     // water    = components.water(renderer, camera, scene, null, 0, -2, -140);
@@ -183,6 +188,7 @@ function init() {
 
     // mesh3.position.set(0, -2, -170);
     beachext.position.set(0, -1.75, -105);
+    endExt.position.set(0, -1, -110);
     space.position.set(0, -11, -40);
 
     //scene.fog = new THREE.Fog(0xFFFFFF, 0.005, 10)
@@ -194,6 +200,7 @@ function init() {
     scene.add(components.sky());
 
     scene.add(beachext);
+    scene.add(endExt);
     // scene.add(mesh3);
     scene.add(space);
     scene.add(light);
