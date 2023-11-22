@@ -12,7 +12,8 @@
   <div class="canvas">
     <div id="canvas"></div>
   </div>
-
+  <div id="overall-progress-bar"></div>
+  </div>
   <div id="opening-panel" class="opening-panel" style="z-index: 2; background-color: black;">
     <div class="center">
       <h1>Climate Change</h1>
@@ -37,7 +38,18 @@
           <p>The global leaders of these emissions are China, The United States, India and the European Union. From 1743 the global temperatures have risen by 17 percent with the highest temperature being 38 ℃ in Kuwait in 2013 from the average of 24 ℃ in 1850. </p>
 
           <br/>
-          <input id="year-slider" class="slider" type="range" min="1850" max="2013" step="1" value="1840" oninput="onYearSliderChange()">
+          Year Slider
+          <div class="range" style="--step:10; --min:1850; --max:2013;">
+            <input id="year-slider" class="slider" type="range" min="1850" max="2013" step="1" value="1840" oninput="onYearSliderChange()">
+            <!-- <input id="year-slider" class="slider" type="range" min="1850" max="2013" step="1" value="1840" list="temp-step-list" oninput="onYearSliderChange()"> -->
+            <!-- <datalist id="temp-step-list">
+              <option>1850</option>
+              <option>25</option>
+              <option>50</option>
+              <option>75</option>
+              <option>2013</option>
+            </datalist> -->
+          </div>
         </div>
         <!-- text-shadow: #00303d 1px 0 10px;" -->
         <div style="position: absolute; left: 50px; top: 50px;"> 
@@ -45,7 +57,7 @@
           <h1 id="year"></h1>
         </div>
         <div style="position: absolute; right: 50px; margin:auto; top: 50px; text-align: right;">
-          <h3>Global Temperature</h3>
+          <h3>Global Average Temperature</h3>
           <h1 id="temperature"></h1>
         </div>
         <!-- <div style="position: absolute; bottom: 50px; left: 50px; width: calc(100% - 100px);">
@@ -63,7 +75,27 @@
           <h3>CSIRO - Net Zero Strategy Organization's Adjusted Sea Level</h3>
           <h1 id="sea-rise"></h1>
         </div>
-
+        <div style="position: absolute; left: 0px; margin:auto; bottom: 150px; text-align: right;">
+          <div class="text-container" style="display: flex; flex-flow: row;">
+            <!-- <h3>Sea </h3> -->
+            <img src="static/img/penny.png" alt="USD Penny" style="height: 100px; width: 100px;"></img>
+            <div style="padding: 0 10px;">
+              <div class="vertical-slider">
+                <div class="vertical-bar" id="sea-coin-bar">
+                
+                </div>
+              </div>
+            </div>
+            <div style="height: 100px;">
+              <div style="position: relative;">
+                <p> 19mm</p>
+              </div>
+              <div style="position: absolute; bottom: 75px;">
+                <p> 0mm</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="text-container" id="sea-prompt" style="position: absolute; top: 0px;">
           <h2>Sea Level Rise</h2>
@@ -71,6 +103,14 @@
           <p></p>
           <br/>
           <input id="sea-slider" class="slider" type="range" min="1880" max="2013" step="1" value="1880" oninput="onSeaSliderChange()">
+          <p>Rising sea levels will cause tides to rise. Hilo is predicted to see a rise of x inches during the low tide and a rise of x inches during high tide. From 2021 to 2025 Hilo will see x percent increase in tides. Hawaii is predicted to lose x inches of land by 2025. Although the numbers are small this could drastically change the landscape in the next 50 years.</p>
+          <div class="info-panel-container" id="info-panel2-slider">
+            <br/>
+            Year Slider
+            <div class="range" style="--step:10; --min:1880; --max:2013;">
+              <input id="sea-slider" class="slider" type="range" min="1880" max="2013" step="1" value="1880" oninput="onSeaSliderChange()">
+            </div>
+          </div>
       </div>
 
 
@@ -86,6 +126,14 @@
         <p>The state of Hawaii aims to have 100% of its energy from renewable resources by 2045. As of 2022, Hawaii has 29% of all its energy from renewable sources.</p>
         <br/>
         Insert PiCharts Here
+      <div class="text-container" id="sea-prompt" style="display: flex; flex-flow: column; position: absolute; top: 0px; height: calc(100% - 100px);">
+        <div>
+          <h2>Resolution</h2>
+          <p>Although the globe is seeing rising temperatures, sea level and tides, they won't rise forever. Global efforts have been made to reduce carbon dioxide emissions and slow the rate of climate change. In 2021, the United States was readmitted into the Paris Agreement, an international treaty aimed at addressing issues of climate change, under an executive order signed by President Biden. The state of Hawaii aims to have 100% of its electricity generated to be from renewable sources by 2045. As of 2022, Hawaii has 29% of its energy from renewables. Although it sounds like a lofty goal, some countries already have 100% of their electricity generated by renewable sources. Albania, Iceland, and Paraguay obtain all their electricity from renewable sources. The future upon the horizon is brighter than it may seem.</p>
+          <br/>
+          <br/>
+        </div>
+        <div id="ClimateStatesGraph" style="flex-grow: 1;"></div>
       </div>
       <div class="info-panel-container" id="info-panel3">
 
@@ -93,8 +141,6 @@
       <!-- <div class="shadow"></div> -->
     </div>
     <div id="panel4" class="panel">
-      <!-- <div id="WaveGraph"></div> -->
-
       <div class="text-container" id="reference-prompt" style="position: absolute; top: 0px; height: calc(100% - 100px); width: calc(100% - 100px);">
         <h2>References</h2>
         <p>references here</p>
@@ -127,6 +173,7 @@
 
   <!-- <script src="static/wavegraph.js"></script> -->
   <!-- async -->
+  <script src="static/climatestatesgraph.js"></script>
   <script src="static/globlegraph.js"></script>
   <script src="static/sealevel.js"></script>
 

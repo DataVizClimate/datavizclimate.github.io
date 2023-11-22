@@ -18,5 +18,6 @@ function onSeaSliderChange() { //event
       document.getElementById("sea-year").innerHTML = `${year}`;
       document.getElementById("sea-rise").innerHTML = `${seaMapping[year].toFixed(1)}mm`;
       seaLevel = seaMapping[year];
+      document.getElementById("sea-coin-bar").style = `height: ${mapRange(seaLevel, 0, 19, 100, 0)}px;`;
     }
   }
