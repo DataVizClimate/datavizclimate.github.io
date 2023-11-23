@@ -4,6 +4,9 @@ let world = null
 
 const colorScale = d3.scaleSequentialSqrt(d3.interpolateYlOrRd);
 
+const legendContainer = d3.select('body').append('div')
+  .attr('class', 'legend-container');
+
 //const getVal = feat => feat.properties.AvgTemp / Math.max(1e5, feat.properties.AvgTemp);
 const getVal = feat => feat.properties.AvgTemp;
 let temperatureMapping = {}
@@ -34,6 +37,28 @@ function buildGlobe(year) {
   .polygonsTransitionDuration(0) //300
   (document.getElementById('globeViz'))
   world.controls().enableZoom = false;
+
+  maxTemp = Math.max.apply(Math, temps)
+  minTemp = Math.min.apply(Math, temps)
+
+  colorScale.domain([minTemp, maxTemp + 100]);
+
+  const reversedTicks = colorScale.ticks(7).reverse();
+
+  const legendContainer = d3.select("#legendContainer");
+
+  const legend = legendContainer.selectAll('.legend')
+    .data(reversedTicks)
+    .enter().append('div')
+    .attr('class', 'legend');
+
+  legend.append('div')
+    .style('width', '20px')
+    .style('height', '20px')
+    .style('background-color', d => colorScale(d));
+
+  legend.append('div')
+    .text(d => d.toFixed(1));
 }
 
 fetch('static/data/GlobalTemp.geojson.gz')
@@ -52,12 +77,6 @@ fetch('static/data/GlobalTemp.geojson.gz')
     temps = temperatureData.features.map(element => element.properties.AvgTemp);
     maxYear = Math.max.apply(Math, years)
     minYear = Math.min.apply(Math, years)
-    maxTemp = Math.max.apply(Math, temps)
-    minTemp = Math.min.apply(Math, temps)
-
-    
-    //const maxVal = Math.max(...temperatureData.features.map(getVal));
-    colorScale.domain([minTemp, maxTemp + 100]);
 
     buildGlobe("1850")
 
