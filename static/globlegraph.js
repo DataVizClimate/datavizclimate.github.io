@@ -28,7 +28,7 @@ function buildGlobe(year) {
   .polygonLabel(({ properties: d }) => `
   <b>${d.Country}</b>
   <br/>
-  Land Temp: ${d.AvgTemp}°C
+  Land Temp: ${d.AvgTemp.toFixed(1)}°C
   `)
   .onPolygonHover(hoverD => world
       .polygonAltitude(d => d === hoverD ? 0.05 : 0.01)//0.05 : 0.01)
