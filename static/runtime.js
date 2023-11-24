@@ -1,11 +1,15 @@
 let scrollSteps = 0;
 let offsets = [0,0];
 
-let epanel = [document.getElementById("panel1"), document.getElementById("panel2"), document.getElementById("panel3"), document.getElementById("panel4")]
+let epanel = [document.getElementById("panel1"), document.getElementById("panel2"), document.getElementById("panel3"), document.getElementById("panel4"), document.getElementById("panel5")]
 let iPanel = [[document.getElementById("info-panel1")], 
                 [document.getElementById("info-panel2"), document.getElementById("info-panel2-slider")], 
                 [document.getElementById("info-panel3")], 
-                [document.getElementById("info-panel4")]]
+                [document.getElementById("info-panel4")],
+                [document.getElementById("info-panel5")]]
+
+console.log(epanel)
+console.log(iPanel)
 let currentEpanelScale = Array.from(Array(epanel.length), () => 0);
 let currentScale = 0;
 let currentOffsets = [0,0];

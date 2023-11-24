@@ -215,6 +215,6 @@ h3 {
 .scroll-down {
   position: fixed;
   bottom: 9px;
-  left: 50%; /* Adjust as needed to horizontally center the element */
-  transform: translateX(-50%); /* Horizontally center the element */
+  left: 50%; 
+  transform: translateX(-50%); 
 }
