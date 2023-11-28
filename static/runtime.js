@@ -176,24 +176,24 @@ function init() {
     
     //loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
     // loadObjComponent('static/models/beach.obj', 'static/textures/beach2.mtl', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
-    loadFbxComponent('static/models/beach2.fbx', scene, [5, -2.35, -63], [-Math.PI, 0, Math.PI], [1,1,1], 
+    loadFbxComponent('static/models/beach2.fbx', scene, [5, -2.35, -93], [-Math.PI, 0, Math.PI], [1,1,1], 
     (object) => {
         const leftBeach  = object.clone();
         const rightBeach = object.clone();
 
-        leftBeach.position.set(-38, -2.35, -63);
+        leftBeach.position.set(-38, -2.35, -93);
         scene.add(leftBeach)
 
-        rightBeach.position.set(43, -2.35, -63);
+        rightBeach.position.set(43, -2.35, -93);
         scene.add(rightBeach)
     });
     camera.position.z = 5;
     //mesh.position.y = -2;
 
     // mesh3.position.set(0, -2, -170);
-    beachext.position.set(0, -1.75, -105);
-    endExt.position.set(0, -1, -110);
-    space.position.set(0, -11, -40);
+    beachext.position.set(0, -1.75, -135);
+    endExt.position.set(0, -1, -140);
+    space.position.set(0, -11, -70);
 
     //scene.fog = new THREE.Fog(0xFFFFFF, 0.005, 10)
     //scene.background = new THREE.Color(0xFFFFFF);
