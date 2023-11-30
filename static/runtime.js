@@ -1,10 +1,16 @@
 let scrollSteps = 0;
 let offsets = [0,0];
 
-let epanel = [document.getElementById("panel1"), document.getElementById("panel2"), document.getElementById("panel3"), document.getElementById("panel4"), document.getElementById("panel5")]
+let epanel = [document.getElementById("panel1"), 
+                document.getElementById("panel2"), 
+                document.getElementById("panel3"), 
+                document.getElementById("panel4"), 
+                document.getElementById("panel5")
+            ]
+
 let iPanel = [[document.getElementById("info-panel1")], 
-                [document.getElementById("info-panel2"), document.getElementById("info-panel2-slider")], 
-                [document.getElementById("info-panel3")], 
+                [document.getElementById("info-panel2")], 
+                [document.getElementById("info-panel3"), document.getElementById("info-panel3-slider")], 
                 [document.getElementById("info-panel4")],
                 [document.getElementById("info-panel5")]]
 
@@ -176,23 +182,23 @@ function init() {
     
     //loadStlComponent('static/models/oahu.stl', scene, [-0.75, -2.35, -67], [-1.57079, 0, 3.14], [5,5,5]);
     // loadObjComponent('static/models/beach.obj', 'static/textures/beach2.mtl', scene, [5, -2.35, -60], [-3.14, 0, 3.14], [1,1,1]);
-    loadFbxComponent('static/models/beach2.fbx', scene, [5, -2.35, -63], [-Math.PI, 0, Math.PI], [1,1,1], 
+    loadFbxComponent('static/models/beach2.fbx', scene, [5, -2.35, -63 -29], [-Math.PI, 0, Math.PI], [1,1,1], 
     (object) => {
         const leftBeach  = object.clone();
         const rightBeach = object.clone();
 
-        leftBeach.position.set(-38, -2.35, -63);
+        leftBeach.position.set(-38, -2.35, -63 -29);
         scene.add(leftBeach)
 
-        rightBeach.position.set(43, -2.35, -63);
+        rightBeach.position.set(43, -2.35, -63 -29);
         scene.add(rightBeach)
     });
     camera.position.z = 5;
     //mesh.position.y = -2;
 
     // mesh3.position.set(0, -2, -170);
-    beachext.position.set(0, -1.75, -105);
-    endExt.position.set(0, -1, -110);
+    beachext.position.set(0, -1.75, -105 -29);
+    endExt.position.set(0, -1, -110 -29);
     space.position.set(0, -11, -40);
 
     //scene.fog = new THREE.Fog(0xFFFFFF, 0.005, 10)
