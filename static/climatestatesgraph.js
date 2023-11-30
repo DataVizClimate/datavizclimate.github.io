@@ -75,7 +75,7 @@ function updateStatesClimateGraph() {
             let cGoal = all_data;
           
             cGoal = cGoal.filter((state) => codes.hasOwnProperty(state["state"]));
-            cGoal = cGoal.filter((state) => state["Year to accomplish"] != 0);
+            //cGoal = cGoal.filter((state) => state["Year to accomplish"] != 0);
 
             for (let i in cGoal) {
               // Generate Abbrivations
@@ -100,18 +100,26 @@ function updateStatesClimateGraph() {
             type: 'choropleth',
             locationmode: 'USA-states',
             locations: cGoal.map(item => item["State"]),
-            z: cGoal.map(item => item["Year to accomplish"]),
-            text: cGoal.map(item => {return `${item["state"]}: ${item["Climate Goal"]}`}),
+            z: cGoal.map(item => {
+                if (item["Year to accomplish"] == 0) {
+                    return 0
+                } else {
+                    return item["Year to accomplish"]}}),
+            text: cGoal.map(item => {
+                if (item['Climate Goal'] == 0) {
+                    return `${item["state"]}: No Climate Initative}`
+                } else {
+                return `${item["state"]}: ${item["Climate Goal"]}`
+                }
+            }),
             colorscale: [  // Color Gradient Generated with Color Brewer
                     [0.0, '#eff3ff'], [0.1, '#c6dbef'],
                     [0.2, '#9ecae1'], [0.3, '#6baed6'],
                     [0.7, '#3182bd'], [1.0, '#08519c']
             ],
             // This probably does the same thing as auto.
-            zmin: cGoal.map(item => item["Year to accomplish"])
-            .reduce((max, current) => (current < max) ? current:max, Number.MAX_SAFE_INTEGER),
-            zmax: cGoal.map(item => item["Year to accomplish"])
-            .reduce((max, current) => (current > max) ? current:max, 0),
+            zmin: Math.min(...cGoal.map(item => (item["Year to accomplish"] == 0 ? Number.MAX_SAFE_INTEGER : item["Year to accomplish"]))),
+            zmax: Math.max(...cGoal.map(item => (item["Year to accomplish"] == 0 ? 0 : item["Year to accomplish"]))),
         
             // customizing the color bar
             colorbar: {
