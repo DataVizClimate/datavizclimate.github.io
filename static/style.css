@@ -6,14 +6,14 @@
 
   body {
     font-family: sans-serif;
-    font-size: 11px;
+    font-size: 17px;
     background-color: #ffffff;
     margin: 0px;
     overflow: hidden;
   }
 
 p {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 h1 {
@@ -119,12 +119,18 @@ h3 {
 }
 
 .text-container {
-  background-color: white;
+  background-color: #F0ECE5DD;
   color: black;
   text-shadow: #000000FF 0px 0 0px;
   border-radius: 10px;
   padding: 25px;
   margin: 50px;
+
+  width:calc(100% - 100px);
+
+  /* border: 2px solid #F0ECE5; */
+  box-shadow: 0px 0px 10px -5px black;
+  /* backdrop-filter: blur(10px); */
 }
 
 .text-container p {
@@ -181,7 +187,7 @@ h3 {
 
 /* min / max labels at the edges */
 .range::before, .range::after {
-  font: 12px monospace;
+  font: 17px; /* monospace; */
   content: counter(x);
   position: absolute;
   bottom: -2ch;
