@@ -120,7 +120,9 @@ h3 {
 
 .text-container {
   background-color: #F0ECE5DD;
+  /* background-color: #161B22; */
   color: black;
+  /* color: #E6EDF3; */
   text-shadow: #000000FF 0px 0 0px;
   border-radius: 10px;
   padding: 25px;
