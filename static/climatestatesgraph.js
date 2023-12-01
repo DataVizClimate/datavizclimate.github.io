@@ -107,7 +107,7 @@ function updateStatesClimateGraph() {
                     return item["Year to accomplish"]}}),
             text: cGoal.map(item => {
                 if (item['Climate Goal'] == 0) {
-                    return `${item["state"]}: No Climate Initative}`
+                    return `${item["state"]}: No Climate Initative`
                 } else {
                 return `${item["state"]}: ${item["Climate Goal"]}`
                 }
