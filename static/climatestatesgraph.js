@@ -123,6 +123,7 @@ function updateStatesClimateGraph() {
         let layout = {
             title: 'State\'s Proposed Deadline Till 100% Clean Energy',
             geo:{
+            bgcolor: 'rgba(0,0,0,0)',
             scope: 'usa',
             },
             dragmode: false,
@@ -131,8 +132,10 @@ function updateStatesClimateGraph() {
                 r: 0,
                 b: 0,
                 t: 40
-                  }//,
+                  },
             // pad: 5
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)'
         };
 
         const div = document.getElementById('ClimateStatesGraph');
