@@ -15,6 +15,7 @@ fetch('static/data/epa-sea-level-mapped.json')
 function onSeaSliderChange() { //event
     if (seaDataReady){
       let year = document.getElementById("sea-slider").value;
+      document.getElementById("selected-sea-year").innerHTML = `${year}`;
       document.getElementById("sea-year").innerHTML = `${year}`;
       document.getElementById("sea-rise").innerHTML = `${seaMapping[year].toFixed(1)}mm`;
       seaLevel = seaMapping[year];
