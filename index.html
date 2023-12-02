@@ -39,19 +39,12 @@
           </div>
           <p>Over time summers are becoming hotter and winters are becoming warmer. GreenHouse gas emissions are affecting the earth’s atmosphere removing earth's layer of protection from the sun. Global leaders of these emissions are China, The United States, and India. From 1850 to 2013 the average global temperature has risen by 17 percent overall, causing temperatures in the U.S to rise from 8 ℃ to 11℃. Observe how the regions are increasingly becoming hotter. Hover over the countries to see temperatures. The slider shows global changes over the years.</p>
           <br/>
-          <p style="text-align: center;">Adjust the Year</p>
           <div class="range" style="--step:10; --min:1850; --max:2013;">
             <input id="year-slider" class="slider" type="range" min="1850" max="2013" step="1" value="1840" oninput="onYearSliderChange()">
+            <span id="selected-year">1840</span>
             <div class='range-slider__progress'></div>
-            <!-- <input id="year-slider" class="slider" type="range" min="1850" max="2013" step="1" value="1840" list="temp-step-list" oninput="onYearSliderChange()"> -->
-            <!-- <datalist id="temp-step-list">
-              <option>1850</option>
-              <option>25</option>
-              <option>50</option>
-              <option>75</option>
-              <option>2013</option>
-            </datalist> -->
           </div>
+          <p style="text-align: center;">Adjust the Year</p>
         </div>
         <!-- text-shadow: #00303d 1px 0 10px;" -->
         <div style="position: absolute; left: 50px; top: 50px;"> 

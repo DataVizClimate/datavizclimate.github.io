@@ -104,7 +104,8 @@ function resizeGlobe() {
 function onYearSliderChange() { //event
   if (globeDataReady){
     let year = document.getElementById("year-slider").value;
-    document.getElementById("year").innerHTML = `${year}`
+    document.getElementById("selected-year").innerHTML = `${year}`;
+    document.getElementById("year").innerHTML = `${year}`;
     document.getElementById("temperature").innerHTML = `${temperatureMapping[year].toFixed(1)}°C`
     //buildGlobe(year)
     world.polygonsData(temperatureData.features.filter(d => d.properties.Year == year))

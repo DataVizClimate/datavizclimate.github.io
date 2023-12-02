@@ -232,3 +232,15 @@ h3 {
 .center-top {
   text-align: center
 }
+
+#selected-year {
+  position: absolute;
+  top: -30px; /* Adjust the top offset as needed */
+  left: 50%; /* Center the number above the slider thumb */
+  transform: translateX(-50%); /* Center the number above the slider thumb */
+}
+
+.slider-container {
+  position: relative;
+  display: inline-block; /* Ensure that the container only takes as much width as necessary */
+}
