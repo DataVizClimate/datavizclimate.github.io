@@ -5,9 +5,9 @@ As the world continues to progress into time, climate change is becoming more of
 Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io/)
 
 # Team Ambitious
-- Christopher Lee - Software Engineer
-- Amanda Nitta - Data Science (Overall Lead)
-- Justin Yip - Design/Storyline Specialist
+- Christopher Lee - Software Engineer Emphasis
+- Amanda Nitta - Data Science Emphasis (Overall Lead)
+- Justin Yip - Design/Storyline Emphasis
 
 # Quick Start (Locally)
 
