@@ -9,6 +9,12 @@ Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io
 - Amanda Nitta - Data Science (Overall Lead)
 - Justin Yip - Design/Storyline Specialist
 
+# Quick Start (Locally)
+
+1. Clone Repository 
+2. Use IDE and download PlugIn For Live Server
+3. Click Go Live for software to be run locally
+
 # Acknowledgements
 
 ## JS
