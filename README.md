@@ -1,7 +1,6 @@
-# Climate Change 
-## Through Narrative Visualization
+# Climate Change
 
-> As the world continues to progress into time, climate change is becoming more of a reality. As summers get hotter, winters warmer, the world is getting warmer due to global warming. Furthermore, leading to higher sea levels, and tides coming more close to land. In our website, we seek to convey these concepts in a visual interactive manner. 
+> As the world continues to progress into time, climate change is becoming more of a reality. As summers get hotter, and winters warmer, the world is getting warmer due to global warming. Furthermore, leading to higher sea levels, and tides coming closer to land. In our website, we seek to convey these concepts in a visually interactive manner through narrative visualization. 
 
 # View Site
 Visit Site: [https://datavizclimate.github.io/](https://datavizclimate.github.io/)
